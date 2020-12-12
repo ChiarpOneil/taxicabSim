@@ -96,9 +96,9 @@ void generateMap(Cell (*matrix)[SO_WIDTH][SO_HEIGHT], Config *conf) {
     y = rand() % SO_HEIGHT;
 
     if (matrix[x][y]->state != HOLE && matrix[x][y]->state != SOURCE) {
-      i++;
-    } else {
       matrix[x][y]->state = SOURCE;
+    } else {
+      i++;
     }
   }
 }
