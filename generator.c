@@ -56,11 +56,11 @@ void parseConf(Config *conf) {
 int checkNoAdiacentHoles(Cell (*matrix)[SO_WIDTH][SO_HEIGHT], int x, int y) {
   int b = 0;
   int i, j;
-  for (i = 0; i < 3; i++) {
-    for (j = 0; j < 3; j++) {
+  for (i = 0; i < 3 && b==0; i++) {
+    for (j = 0; j < 3 && b==0; j++) {
       if ((x + i - 1) >= 0 && (x + i - 1) <= SO_WIDTH && (y + j - 1) >= 0 &&
-          (y + j - 1) <= SO_HEIGHT && !(i == 1 && j == 1)) {
-        b = b && (matrix[x + i - 1][y + j - 1]->state != HOLE);
+          (y + j - 1) <= SO_HEIGHT) {
+        b = (matrix[x + i - 1][y + j - 1]->state == HOLE);
       }
     }
   }
