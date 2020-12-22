@@ -59,14 +59,13 @@ int checkNoAdiacentHoles(Cell (*matrix)[SO_WIDTH][SO_HEIGHT], int x, int y) {
   for (i = 0; i < 3; i++) {
     for (j = 0; j < 3; j++) {
       if ((x + i - 1) >= 0 && (x + i - 1) <= SO_WIDTH && (y + j - 1) >= 0 &&
-          (y + j - 1) <= SO_HEIGHT && !(i == 1 && j == 1)) {
-        b = b && (matrix[x + i - 1][y + j - 1]->state != HOLE);
+          (y + j - 1) <= SO_HEIGHT && matrix[x + i - 1][y + j - 1]->state == HOLE) {
+        b = 1;
       }
     }
   }
   return b;
 }
-
 /*
  * Populates matrix[][] with Cell struct with status Free, Source, Hole
  */
